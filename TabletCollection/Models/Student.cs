@@ -9,9 +9,17 @@ namespace TabletCollection.Models
 {
     public class Student
     {
+        public int ID { get; set; }
+
+        public string ImportID { get; set; }
+
         [Required]
         [DisplayName("First Name"), MaxLength(50)]
         public string FirstName { get; set; }
+
+        [DisplayName("NickName"), MaxLength(50)]
+        public string NickName { get; set; }
+
         [Required]
         [DisplayName("Last Name"), MaxLength(50)]
         public string LastName { get; set; }
@@ -19,7 +27,10 @@ namespace TabletCollection.Models
         [DisplayName("Full Name")]
         public string FullName
         {
-            get { return $"{FirstName} {LastName}"; }
+            get {
+                var _name = String.IsNullOrEmpty(NickName) ? FirstName : NickName;
+                return $"{_name} {LastName}";
+            }
         }
         [Required]
         [DisplayName("Class Of")]
