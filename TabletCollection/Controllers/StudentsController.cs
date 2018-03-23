@@ -21,6 +21,12 @@ namespace TabletCollection.Controllers
             return View(db.Students.ToList());
         }
 
+        [ChildActionOnly]
+        public ActionResult _StudentsPartial()
+        {
+            return View(db.Students.ToList());
+        }
+
         // GET: Students/Details/5
         public ActionResult Details(int? id)
         {

@@ -23,8 +23,12 @@ namespace TabletCollection
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/customscripts").Include(
+                "~/Content/DataTables/datatables.js"));
+
             bundles.Add(new StyleBundle("~/Content/cssstyles").Include(
                       "~/Content/Flatly/bootstrap-flatly.css",
+                      "~/Content/DataTables/datatables.css",
                       "~/Content/site.css"));
             //bundles.Add(new StyleBundle("~/Content/css").Include(
             //          "~/Content/bootstrap.css",

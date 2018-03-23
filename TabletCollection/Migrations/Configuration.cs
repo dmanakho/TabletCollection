@@ -23,7 +23,6 @@ namespace TabletCollection.Migrations
             var students = new List<Student>
             {
                 new Student{ImportID = "5913", FirstName ="Adrienne", LastName="Sheitman", NickName="Adrienne", UserName="adrienne_sheitman@caryacademy.org",ClassOf=2018,ForeignExchangeBound=false},
-                new Student{ImportID = "5913", FirstName ="Adrienne", LastName="Sheitman", NickName="Adrienne", UserName="adrienne_sheitman@caryacademy.org",ClassOf=2018,ForeignExchangeBound=false},
                 new Student{ImportID = "7351", FirstName ="Aesha", LastName="Desai", NickName="Aesha", UserName="aesha_desai@caryacademy.org",ClassOf=2018,ForeignExchangeBound=false},
                 new Student{ImportID = "7878", FirstName ="Alexander", LastName="Boa", NickName="AJ", UserName="aj_boa@caryacademy.org",ClassOf=2018,ForeignExchangeBound=false},
                 new Student{ImportID = "7860", FirstName ="Alexander", LastName="Knott", NickName="Alex", UserName="alex_knott@caryacademy.org",ClassOf=2018,ForeignExchangeBound=false},
