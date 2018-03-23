@@ -35,5 +35,7 @@ namespace TabletCollection.Models
         [Required]
         [DisplayName("Class Of")]
         public int ClassOf { get; set; }
+
+        public virtual Collection Collection { get; set; }
     }
 }

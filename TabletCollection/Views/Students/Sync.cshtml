@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TabletCollection.Models.studentDTO>
+
+@{
+    ViewBag.Title = "Sync";
+}
+
+<h2>Sync</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.FirstOrDefault().person_pk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m=> m.FirstOrDefault().first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m=>m.FirstOrDefault().preferred_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.FirstOrDefault().last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.FirstOrDefault().graduation_year)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.person_pk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preferred_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.graduation_year)
+            </td>
+        </tr>
+    }
+
+</table>
+

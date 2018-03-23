@@ -22,6 +22,13 @@ namespace TabletCollection.DAL
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
+            modelBuilder.Entity<Tablet>()
+                .HasOptional(c => c.Collection)
+                .WithRequired(t => t.Tablet);
+            modelBuilder.Entity<Student>()
+                .HasOptional(c => c.Collection)
+                .WithRequired(t => t.Student);
+
         }
         public override int SaveChanges()
         {
