@@ -16,18 +16,12 @@ namespace TabletCollection.DAL
 
         public DbSet<Tablet> Tablets { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Collection> Collections { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-            modelBuilder.Entity<Tablet>()
-                .HasOptional(c => c.Collection)
-                .WithRequired(t => t.Tablet);
-            modelBuilder.Entity<Student>()
-                .HasOptional(c => c.Collection)
-                .WithRequired(t => t.Student);
 
         }
         public override int SaveChanges()
@@ -56,16 +50,13 @@ namespace TabletCollection.DAL
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    //if (!entry.Entity.CreatedOn.HasValue)
-                    //{
-                    //    entry.Entity.CreatedOn = auditDate;
-                    //}
                     entry.Entity.UpdatedOn = auditDate;
                     entry.Entity.UpdatedBy = auditUser;
                 }
             }
             return base.SaveChanges();
         }
-    }
+
+     }
 
 }

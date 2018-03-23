@@ -25,6 +25,8 @@ namespace TabletCollection.Models
         [DisplayName("Asset Tag"), MaxLength(20)]
         public string AssetTag { get; set; }
 
-        public virtual Collection Collection { get; set; }
+        public bool IsPurchased { get; set; }
+
+        public virtual ICollection<Collection> Collections { get; set; }
     }
 }

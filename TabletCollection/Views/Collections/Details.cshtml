@@ -1,0 +1,74 @@
+﻿@model TabletCollection.Models.Collection
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Collection</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.ImportID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.ImportID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tablet.TabletName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tablet.TabletName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsStylus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsStylus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsNegligence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsNegligence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChargeNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChargeNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

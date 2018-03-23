@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TabletCollection.Models.Collection>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.ImportID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tablet.TabletName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsStylus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsNegligence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChargeNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.ImportID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tablet.TabletName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsStylus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsNegligence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChargeNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -47,7 +47,7 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,TabletName,SerialNo,AssetTag,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Tablet tablet)
+        public ActionResult Create([Bind(Include = "ID,TabletName,SerialNo,AssetTag,IsPurchased,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Tablet tablet)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TabletName,SerialNo,AssetTag,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Tablet tablet)
+        public ActionResult Edit([Bind(Include = "ID,TabletName,SerialNo,AssetTag,IsPurchased,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Tablet tablet)
         {
             if (ModelState.IsValid)
             {

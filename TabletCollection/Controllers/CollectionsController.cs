@@ -11,107 +11,116 @@ using TabletCollection.Models;
 
 namespace TabletCollection.Controllers
 {
-    public class StudentsController : Controller
+    public class CollectionsController : Controller
     {
         private TabletCollectionDBContext db = new TabletCollectionDBContext();
 
-        // GET: Students
+        // GET: Collections
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            var collections = db.Collections.Include(c => c.Student).Include(c => c.Tablet);
+            return View(collections.ToList());
         }
 
-        // GET: Students/Details/5
+        // GET: Collections/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Collection collection = db.Collections.Find(id);
+            if (collection == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(collection);
         }
 
-        // GET: Students/Create
+        // GET: Collections/Create
         public ActionResult Create()
         {
+            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID");
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName");
             return View();
         }
 
-        // POST: Students/Create
+        // POST: Collections/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ImportID,FirstName,NickName,LastName,UserName,ForeignExchangeBound,ClassOf")] Student student)
+        public ActionResult Create([Bind(Include = "Id,IsStylus,IsAC,IsNegligence,ChargeNotes,Comments,TabletID,StudentID,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Collection collection)
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
+                db.Collections.Add(collection);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(student);
+            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID", collection.StudentID);
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collection.TabletID);
+            return View(collection);
         }
 
-        // GET: Students/Edit/5
+        // GET: Collections/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Collection collection = db.Collections.Find(id);
+            if (collection == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID", collection.StudentID);
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collection.TabletID);
+            return View(collection);
         }
 
-        // POST: Students/Edit/5
+        // POST: Collections/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ImportID,FirstName,NickName,LastName,UserName,ForeignExchangeBound,ClassOf")] Student student)
+        public ActionResult Edit([Bind(Include = "Id,IsStylus,IsAC,IsNegligence,ChargeNotes,Comments,TabletID,StudentID,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Collection collection)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(collection).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(student);
+            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID", collection.StudentID);
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collection.TabletID);
+            return View(collection);
         }
 
-        // GET: Students/Delete/5
+        // GET: Collections/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Collection collection = db.Collections.Find(id);
+            if (collection == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(collection);
         }
 
-        // POST: Students/Delete/5
+        // POST: Collections/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
+            Collection collection = db.Collections.Find(id);
+            db.Collections.Remove(collection);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

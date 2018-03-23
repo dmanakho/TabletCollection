@@ -1,0 +1,80 @@
+﻿@model TabletCollection.Models.Collection
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Collection</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.ImportID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.ImportID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tablet.TabletName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tablet.TabletName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsStylus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsStylus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsNegligence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsNegligence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChargeNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChargeNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

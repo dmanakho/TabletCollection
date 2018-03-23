@@ -7,13 +7,13 @@ namespace TabletCollection.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddedCollectoinandOnetoOneRelationship : IMigrationMetadata
+    public sealed partial class NewInitialwithOneToMany : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedCollectoinandOnetoOneRelationship));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewInitialwithOneToMany));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803230140010_AddedCollectoinandOnetoOneRelationship"; }
+            get { return "201803231736188_NewInitialwithOneToMany"; }
         }
         
         string IMigrationMetadata.Source

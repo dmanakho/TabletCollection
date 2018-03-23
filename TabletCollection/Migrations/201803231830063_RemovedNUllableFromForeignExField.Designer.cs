@@ -7,13 +7,13 @@ namespace TabletCollection.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class RemovedNUllableFromForeignExField : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedNUllableFromForeignExField));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803221923233_Initial"; }
+            get { return "201803231830063_RemovedNUllableFromForeignExField"; }
         }
         
         string IMigrationMetadata.Source

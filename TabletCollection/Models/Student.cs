@@ -24,6 +24,12 @@ namespace TabletCollection.Models
         [DisplayName("Last Name"), MaxLength(50)]
         public string LastName { get; set; }
 
+        [Required]
+        [DisplayName("User Name"), MaxLength(50)]
+        public string UserName { get; set; }
+
+        public bool ForeignExchangeBound { get; set; }
+
         [DisplayName("Full Name")]
         public string FullName
         {
@@ -34,8 +40,8 @@ namespace TabletCollection.Models
         }
         [Required]
         [DisplayName("Class Of")]
-        public int ClassOf { get; set; }
+        public int? ClassOf { get; set; }
 
-        public virtual Collection Collection { get; set; }
+        public virtual ICollection<Collection> Collections { get; set; }
     }
 }
