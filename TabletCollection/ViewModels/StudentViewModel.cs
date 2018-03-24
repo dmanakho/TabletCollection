@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using TabletCollection.Models;
 
-namespace TabletCollection.Models
+namespace TabletCollection.ViewModels
 {
-    public class Student
+    public class StudentViewModel
     {
+
         public int ID { get; set; }
 
         public string ImportID { get; set; }
@@ -32,17 +34,14 @@ namespace TabletCollection.Models
         public bool ForeignExchangeBound { get; set; }
 
         [DisplayName("Full Name")]
-        public string FullName
-        {
-            get {
-                var _name = String.IsNullOrEmpty(NickName) ? FirstName : NickName;
-                return $"{_name} {LastName}";
-            }
-        }
+        public string FullName { get; set; }
+
         [Required]
         [DisplayName("Class Of")]
         public int? ClassOf { get; set; }
 
-        public virtual ICollection<Collection> Collections { get; set; }
+        public bool IsTabletCollected { get; set; }
+
+        public int CollectionID { get; set; }
     }
 }

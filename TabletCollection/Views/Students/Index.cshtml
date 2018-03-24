@@ -1,7 +1,7 @@
-﻿@model IEnumerable<TabletCollection.Models.Student>
+﻿@model IEnumerable<TabletCollection.ViewModels.StudentViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Students";
 }
 
 <div class="row well">
@@ -50,7 +50,7 @@
                     @Html.DisplayFor(modelItem => item.ClassOf)
                 </td>
                 <td>
-                    @Html.ActionLink("Collect", "Collect", "Collections", new { StudentID = item.ID }, new { @class = "btn btn-primary btn-xs" })
+                    @Html.ActionLink("Collect", "Create", "Collections", new { StudentID = item.ID }, new { @class = "btn btn-primary btn-xs" })
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-xs" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning btn-xs" })
                 </td>
@@ -67,9 +67,9 @@
                 {
                     // "dom": 'lfBpt<pi>',
                     "dom":
-                        "<'row'<'col-sm-2 text-primary'l><'col-sm-2 text-primary'f><'col-sm-3 text-center'B><'col-sm-5'p>>" +
+                        "<'row'<'col-sm-3 text-warning'l><'col-sm-3 text-primary'f><'col-sm-6'p>>" +
                         "<'row'<'col-sm-12'tr>>" +
-                        "<'row'<'col-sm-7 text-success'i><'col-sm-5'p>>",
+                        "<'row'<'col-sm-4 text-info'i><'col-sm-3 text-center'B><'col-sm-5'p>>",
                     buttons: [
                         'copy',
                         'excel',
@@ -78,11 +78,10 @@
                     "columnDefs": [
                         { "orderable": false, "targets": 4 }
                     ],
-                    "pagingType": "numbers",
+                    "pagingType": "first_last_numbers",
 
                 }
             );
         });
     </script>
-
 }

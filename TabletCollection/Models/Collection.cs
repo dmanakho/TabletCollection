@@ -17,12 +17,16 @@ namespace TabletCollection.Models
         public int Id { get; set; }
         [DisplayName("Stylus")]
         public bool IsStylus { get; set; }
+
         [DisplayName("AC")]
         public bool IsAC { get; set; }
+
         [DisplayName("Negligence")]
         public bool IsNegligence { get; set; }
+
         [DisplayName("Notes")]
         public string ChargeNotes { get; set; }
+
         public string Comments { get; set; }
 
         public int TabletID { get; set; }

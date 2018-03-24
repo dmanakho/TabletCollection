@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using TabletCollection.DAL;
 using TabletCollection.Models;
+using TabletCollection.ViewModels;
+using AutoMapper;
 
 namespace TabletCollection.Controllers
 {
@@ -18,29 +20,35 @@ namespace TabletCollection.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            var students = db.Students
+                .OrderBy(o => o.LastName).ThenBy(o => o.FirstName)
+                .ToList();
+            var studentsViewModel = Mapper.Map<List<StudentViewModel>>(students);
+            return View(studentsViewModel);
         }
 
         [ChildActionOnly]
         public ActionResult _StudentsPartial()
         {
+            //need to change this code to return selectlist to populate dropdown and Select2 jscript
             return View(db.Students.ToList());
         }
 
         // GET: Students/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Student student = db.Students.Find(id);
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(student);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    //not implemented dont need dont care
+        //    //if (id == null)
+        //    //{
+        //    //    return new httpstatuscoderesult(httpstatuscode.badrequest);
+        //    //}
+        //    //student student = db.students.find(id);
+        //    //if (student == null)
+        //    //{
+        //    //    return httpnotfound();
+        //    //}
+        //    //return view(student);
+        //}
 
         // GET: Students/Create
         public ActionResult Create()
@@ -53,16 +61,17 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ImportID,FirstName,NickName,LastName,UserName,ForeignExchangeBound,ClassOf")] Student student)
+        public ActionResult Create(StudentViewModel studentViewModel)
         {
+            
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
+                db.Students.Add(Mapper.Map<Student>(studentViewModel));
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(student);
+            return View(studentViewModel);
         }
 
         // GET: Students/Edit/5

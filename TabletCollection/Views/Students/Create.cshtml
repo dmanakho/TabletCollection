@@ -1,11 +1,17 @@
 ﻿@model TabletCollection.Models.Student
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add Student";
 }
 
-<h2>Create</h2>
-
+<div class="row well">
+    <div class="offset-1 col-1">
+        <h2 class="text-primary">Add new student record</h2>
+    </div>
+    <div class="col-8">
+        <p>created by: @User.Identity.Name | current time: @DateTime.Now.ToShortTimeString()</p>
+    </div>
+</div>
 
 @using (Html.BeginForm()) 
 {
@@ -75,15 +81,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

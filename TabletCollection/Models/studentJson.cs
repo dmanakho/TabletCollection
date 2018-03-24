@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TabletCollection.Models
 {
-    public class studentDTO
+    public class studentJson
     {
         public int household_fk { get; set; }
         public int person_pk { get; set; }

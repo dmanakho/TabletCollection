@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TabletCollection.Infrastructure;
 
 namespace TabletCollection.Controllers
 {
@@ -17,8 +18,10 @@ namespace TabletCollection.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            var tabletMapper = new StudentTabletMapper();
 
-            return View();
+
+            return View(tabletMapper);
         }
 
         public ActionResult Contact()

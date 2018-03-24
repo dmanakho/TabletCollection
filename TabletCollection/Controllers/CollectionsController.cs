@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using TabletCollection.DAL;
 using TabletCollection.Models;
+using TabletCollection.ViewModels;
+using AutoMapper;
 
 namespace TabletCollection.Controllers
 {
@@ -38,11 +40,18 @@ namespace TabletCollection.Controllers
         }
 
         // GET: Collections/Create
-        public ActionResult Create()
+        public ActionResult Create(int? studentID)
         {
-            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID");
+            if (!studentID.HasValue)
+            {
+                return RedirectToAction("Index", "Students", null);
+            }
+
+            var collection = new CollectionViewModel(studentID.Value);
+
+            //ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID");
             ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName");
-            return View();
+            return View(collection);
         }
 
         // POST: Collections/Create

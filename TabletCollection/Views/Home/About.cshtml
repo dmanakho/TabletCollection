@@ -1,7 +1,31 @@
-﻿@{
+﻿@model TabletCollection.Infrastructure.StudentTabletMapper
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Tablet Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model._stutablet)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
