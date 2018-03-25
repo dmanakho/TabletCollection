@@ -37,8 +37,14 @@ namespace TabletCollection.Controllers
         [ChildActionOnly]
         public ActionResult _StudentsPartial()
         {
-            //need to change this code to return selectlist to populate dropdown and Select2 jscript
-            return View(db.Students.ToList());
+            var students = from s in db.Students select s;
+            var collectedStudentIDs = db.Collections
+                    .Select(s => s.StudentID);
+            students = students
+                .Where(s => !collectedStudentIDs.Contains(s.ID))
+                .OrderBy(s => s.FirstName).ThenBy(s => s.LastName); ;
+            var studentsViewModel = Mapper.Map<List<StudentViewModel>>(students.ToList());
+            return PartialView(studentsViewModel);
         }
 
         // GET: Students/Details/5

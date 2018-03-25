@@ -20,7 +20,7 @@
         @using (@Html.BeginForm(null, null, FormMethod.Get))
         {
             <div class="form-horizontal col-6 col-md-offset-6 pull-left">
-                @Html.Label("filter", "Toggle to show All or Collected Tablets Only:", new { @class = "label label-default" })
+                @Html.Label("filter", "Toggle to show All or Still to be Collected Tablets:", new { @class = "label label-default" })
                 @Html.CheckBox("filter", true, new { data_toggle = "toggle", id = "filter", data_off = "All", data_on = "Not Collected", data_onstyle = "success", data_offstyle = "info", onchange = "this.form.submit()" })
             </div>
         }

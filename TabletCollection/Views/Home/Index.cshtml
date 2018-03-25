@@ -17,6 +17,7 @@
         <p class="text-warning">Start typing in the search box</p>
         <p>
             @{Html.RenderAction(actionName: "_StudentsPartial", controllerName: "Students");}
+
         </p>
     </div>
     <div class="col-md-6">
@@ -25,3 +26,20 @@
     </div>
 
 </div>
+
+
+@section scripts {
+    <script>
+        //Data Table in Partial view on Home page
+        $(document).ready(function () {
+            $("#DataTableHomePagePartial").DataTable(
+                {
+                    "dom": "<'col-sm-1'f>'",
+                    "columnDefs": [
+                        { "orderable": false, "targets": 1 }
+                    ],
+                }
+            );
+        });
+    </script>
+}
