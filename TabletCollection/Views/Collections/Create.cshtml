@@ -6,7 +6,7 @@
 
 <div class="row well">
     <div class="offset-1 col-1">
-        <h2 class="text-primary">Collect tablet from:<span class="glyphicon-arrow-right"></span> <span class="text-success">@Model.StudentFullName</span></h2>
+        <h2 class="text-primary">Collect tablet from:<span class="glyphicon glyphicon-user"></span> <span class="text-success">@Model.StudentFullName</span></h2>
         @if (String.IsNullOrEmpty(Model.TabletTabletName))
         {
             <p class="text-danger">Default tablet (ys-username) wasn't found. Please pick tablet manually from the dropdown.</p>
@@ -30,7 +30,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TabletID, "TabletID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TabletID", null, htmlAttributes: new { @class = "form-control", id="select2" })
+                @Html.DropDownList("TabletID", null, htmlAttributes: new { @class = "form-control", id = "select2" })
                 @Html.ValidationMessageFor(model => model.TabletID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -83,9 +83,18 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Collect" class="btn btn-primary" />
-                @Html.ActionLink("To Student List", "Index", "Students", null, new { @class = "btn btn-default" })
-                @Html.ActionLink("To Collections List", "Index", null, new { @class = "btn btn-default" })
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-floppy-saved"></span>
+                    <input type="submit" value="Collect" class="btn btn-primary" />
+                </span>
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-user"></span>
+                    @Html.ActionLink("To Student List", "Index", "Students", null, new { @class = "btn btn-default" })
+                </span>
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-list"></span>
+                    @Html.ActionLink("To Collections List", "Index", null, new { @class = "btn btn-default" })
+                </span>
             </div>
         </div>
     </div>

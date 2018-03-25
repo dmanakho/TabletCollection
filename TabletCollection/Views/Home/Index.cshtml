@@ -5,13 +5,16 @@
 <div class="jumbotron">
     <h1 class="text-primary">Tablet Collection</h1>
     <p class="lead">Press the button to start collecting</p>
-    @Html.ActionLink("Collect »", "Index", "Students", null, new { @class = "btn btn-primary btn-lg" })
+    <span class="icon-input-btn">
+        <span class="glyphicon glyphicon-briefcase"></span>
+        @Html.ActionLink("Collect »", "Index", "Students", null, new { @class = "btn btn-primary btn-lg" })
+    </span>
 </div>
 
 <div class="row">
     <div class="col-md-6">
         <h2 class="text-info">Quick Collect</h2>
-        <p class="text-warning">Drop down box instead of table</p>
+        <p class="text-warning">Start typing in the search box</p>
         <p>
             @{Html.RenderAction(actionName: "_StudentsPartial", controllerName: "Students");}
         </p>

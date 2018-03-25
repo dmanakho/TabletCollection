@@ -9,7 +9,10 @@
         <h2 class="text-primary">Students</h2>
     </div>
     <div class="col-8">
-        @Html.ActionLink("Create New", "Create", "Students", null, new { @class = "btn btn-primary btn-sm" })
+        <span class="icon-input-btn">
+            <span class="glyphicon glyphicon-file"></span>
+            @Html.ActionLink("Create New", "Create", "Students", null, new { @class = "btn btn-primary btn-sm" })
+        </span>
     </div>
 </div>
 

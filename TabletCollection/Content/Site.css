@@ -23,6 +23,26 @@ textarea {
     max-width: 280px;
 }
 
-.commentsinput{
+.commentsinput {
     max-width: 600px;
 }
+
+.icon-input-btn {
+    display: inline-block;
+    position: relative;
+}
+
+    .icon-input-btn input[type="submit"] {
+        padding-left: 2em;
+    }
+    .icon-input-btn a {
+        padding-left: 2.5em;
+    }
+    .icon-input-btn .glyphicon {
+        display: inline-block;
+        position: absolute;
+        left: 0.65em;
+        top: 30%;
+    }
+
+

@@ -1,14 +1,17 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <text>
-    <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">
-            Hello, @User.Identity.Name!
-        </li>
-        <li>
-            @Html.ActionLink("Sign out", "SignOut", "Account", null,new { @class = "btn btn-warning btn-xs" })
-        </li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-text">
+                Hello, @User.Identity.Name!
+            </li>
+            <li>
+                <span class="icon-input-btn" style="margin-top:6px">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    @Html.ActionLink("Sign out", "SignOut", "Account", null, new { @class = "btn btn-warning" })
+                </span>
+            </li>
+        </ul>
     </text>
 }
 else

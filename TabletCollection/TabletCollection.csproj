@@ -316,6 +316,7 @@
     <Content Include="Content\Datatables\Responsive-2.2.1\js\responsive.semanticui.min.js" />
     <Content Include="Content\Flatly\bootstrap-flatly.css" />
     <Content Include="Content\Flatly\bootstrap-flatly.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Select2\css\select2.css" />
     <Content Include="Content\Select2\css\select2.min.css" />
     <Content Include="Content\Select2\js\i18n\af.js" />
@@ -401,6 +402,10 @@
     <Content Include="Content\Flatly\_variables.scss" />
     <Content Include="Content\Datatables\Buttons-1.5.1\css\common.scss" />
     <Content Include="Content\Datatables\Buttons-1.5.1\css\mixins.scss" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -416,6 +421,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

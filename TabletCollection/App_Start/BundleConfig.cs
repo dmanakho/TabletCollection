@@ -26,7 +26,8 @@ namespace TabletCollection
 
             bundles.Add(new ScriptBundle("~/bundles/customscripts").Include(
                 "~/Content/Select2/js/select2.js",
-               "~/Content/DataTables/datatables.js"
+               "~/Content/DataTables/datatables.js",
+               "~/Scripts/Site.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/cssstyles").Include(
