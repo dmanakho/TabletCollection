@@ -6,7 +6,10 @@
 
 <div class="row well">
     <div class="offset-1 col-1">
-        <h2 class="text-danger">Deleting: @Model.TabletName</h2>
+        <h2 class="text-danger">
+            <span class="glyphicon glyphicon-trash">&nbsp;</span>
+            Deleting: @Model.TabletName
+        </h2>
     </div>
     <div class="col-8 text-muted">
         <p>
@@ -14,7 +17,10 @@
             updated by: @Model.GetUpdatedByUserName updated on: @Model.UpdatedOn
         </p>
     </div>
-    <h3 class="text-danger">Are you sure? This will permanently delete the record</h3>
+    <h3 class="text-danger">
+        <span class="glyphicon glyphicon-alert">&nbsp; </span> 
+         Are you sure? The record will be permanently deletes. There is no Undo Action!
+    </h3>
 </div>
 
 <div>
@@ -59,9 +65,15 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" />
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        <div class="form-group well well-sm">
+            <span class="icon-input-btn">
+                <span class="glyphicon glyphicon-trash"></span>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </span>
+            <span class="icon-input-btn">
+                <span class="glyphicon glyphicon-step-backward"></span>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+            </span>
         </div>
     }
 </div>

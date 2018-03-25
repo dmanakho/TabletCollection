@@ -10,6 +10,7 @@ using TabletCollection.DAL;
 using TabletCollection.Models;
 using TabletCollection.ViewModels;
 using AutoMapper;
+using System.Data.Entity.Infrastructure;
 
 namespace TabletCollection.Controllers
 {
@@ -51,6 +52,13 @@ namespace TabletCollection.Controllers
 
             var collectionViewModel = new CollectionViewModel(studentID.Value);
 
+            var checkIfCollected = db.Collections.Where(t => t.TabletID == collectionViewModel.TabletID).FirstOrDefault();
+
+            if (!(checkIfCollected == null))
+            {
+                collectionViewModel.Comments = $"Uh-Oh! Something went wrong!<br /> " +
+                    $"The tablet is shown as collected. Conflicting collection ID: {checkIfCollected.Id}";
+            }
 
             ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
             return View(collectionViewModel);
@@ -71,7 +79,7 @@ namespace TabletCollection.Controllers
                     var collection = Mapper.Map<Collection>(collectionViewModel);
                     db.Collections.Add(collection);
                     db.SaveChanges();
-                    return RedirectToAction("Index","Students");
+                    return RedirectToAction("Index", "Students");
                 }
             }
             catch (DataException dex)
@@ -111,14 +119,32 @@ namespace TabletCollection.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CollectionViewModel collectionViewModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var collection = Mapper.Map<Collection>(collectionViewModel);
-                db.Entry(collection).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    var collection = Mapper.Map<Collection>(collectionViewModel);
+                    db.Entry(collection).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-           ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
+            catch (DbUpdateConcurrencyException)
+            {
+                //This is implemented by a virtue of having "RowVersion" field in our model and database. watch this video for details: https://youtu.be/Gi_kEbc5faQ
+                ModelState.AddModelError(string.Empty, $"The record you've been trying to update was modified by another user. Please go back and try again.");
+            }
+            catch (DataException dex)
+            {
+                ModelState.AddModelError(string.Empty, $"Database Error occured Copy the error message and send it to Dima </br>: {dex.Message}. + {dex.InnerException.Message} + {dex.InnerException.InnerException.Message}");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Unexpected error occured. Copy the error message and send it to Dima {ex.Message} | {ex.InnerException.InnerException.Message}" +
+                    $"{ex.InnerException.InnerException.Message}");
+            }
+
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
             return View(collectionViewModel);
         }
 
