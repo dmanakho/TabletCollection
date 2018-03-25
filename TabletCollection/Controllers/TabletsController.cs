@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TabletCollection.DAL;
 using TabletCollection.Models;
+using TabletCollection.ViewModels;
 
 namespace TabletCollection.Controllers
 {
@@ -16,9 +18,19 @@ namespace TabletCollection.Controllers
         private TabletCollectionDBContext db = new TabletCollectionDBContext();
 
         // GET: Tablets
-        public ActionResult Index()
+        public ActionResult Index(bool filter = true)
         {
-            return View(db.Tablets.ToList());
+            var tablets = from t in db.Tablets select t;
+            if (filter)
+            {
+                var collectedTabletsIDs = db.Collections
+                    .Select(s => s.TabletID);
+                tablets = tablets.Where(s => !collectedTabletsIDs.Contains(s.ID));
+            }
+            tablets = tablets.OrderBy(t=>t.TabletName);
+            var tabletViewModels = Mapper.Map<List<TabletViewModel>>(tablets);
+           
+            return View(tabletViewModels);
         }
 
         // GET: Tablets/Details/5
@@ -29,11 +41,13 @@ namespace TabletCollection.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Tablet tablet = db.Tablets.Find(id);
+            
             if (tablet == null)
             {
                 return HttpNotFound();
             }
-            return View(tablet);
+            var tabletViewModel = Mapper.Map<Tablet>(tablet);
+            return View(tabletViewModel);
         }
 
         // GET: Tablets/Create
@@ -47,16 +61,17 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,TabletName,SerialNo,AssetTag,IsPurchased,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Tablet tablet)
+        public ActionResult Create(TabletViewModel tabletViewModel)
         {
             if (ModelState.IsValid)
             {
+                var tablet = Mapper.Map<Tablet>(tabletViewModel);
                 db.Tablets.Add(tablet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tablet);
+            return View(tabletViewModel);
         }
 
         // GET: Tablets/Edit/5
@@ -71,7 +86,9 @@ namespace TabletCollection.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tablet);
+
+            var tabletViewModel = Mapper.Map<TabletViewModel>(tablet);
+            return View(tabletViewModel);
         }
 
         // POST: Tablets/Edit/5
@@ -79,15 +96,17 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TabletName,SerialNo,AssetTag,IsPurchased,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Tablet tablet)
+        public ActionResult Edit(TabletViewModel tabletViewModel)
         {
             if (ModelState.IsValid)
             {
+                var tablet = Mapper.Map<Tablet>(tabletViewModel);
+
                 db.Entry(tablet).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tablet);
+            return View(tabletViewModel);
         }
 
         // GET: Tablets/Delete/5

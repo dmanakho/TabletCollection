@@ -27,6 +27,7 @@ namespace TabletCollection
             bundles.Add(new ScriptBundle("~/bundles/customscripts").Include(
                 "~/Content/Select2/js/select2.js",
                "~/Content/DataTables/datatables.js",
+               "~/Content/bootstrap-toggle-master/js/bootstrap-toggle.js",
                "~/Scripts/Site.js"
                 ));
 
@@ -35,6 +36,7 @@ namespace TabletCollection
                       "~/Content/DataTables/datatables.css",
                       "~/Content/Select2/css/select2.css",
                       "~/Content/Select2/select2-bootstrap.css",
+                      "~/Content/bootstrap-toggle-master/css/bootstrap-toggle.css",
                       "~/Content/site.css"));
             //bundles.Add(new StyleBundle("~/Content/css").Include(
             //          "~/Content/bootstrap.css",

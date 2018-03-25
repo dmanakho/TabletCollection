@@ -18,12 +18,19 @@ namespace TabletCollection.Controllers
         private TabletCollectionDBContext db = new TabletCollectionDBContext();
 
         // GET: Students
-        public ActionResult Index()
+        public ActionResult Index(bool filter = true)
         {
-            var students = db.Students
-                .OrderBy(o => o.LastName).ThenBy(o => o.FirstName)
-                .ToList();
-            var studentsViewModel = Mapper.Map<List<StudentViewModel>>(students);
+            var students = from s in db.Students select s;
+
+            if (filter)
+            {
+                var collectedStudentIDs = db.Collections
+                    .Select(s => s.StudentID);
+                students = students.Where(s => !collectedStudentIDs.Contains(s.ID));
+            }
+            students = students.OrderBy(s => s.FirstName).ThenBy(s => s.LastName);
+            
+            var studentsViewModel = Mapper.Map<List<StudentViewModel>>(students.ToList());
             return View(studentsViewModel);
         }
 

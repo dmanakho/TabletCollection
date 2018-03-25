@@ -15,6 +15,8 @@ namespace TabletCollection
             CreateMap<Student, StudentViewModel>();
             CreateMap<StudentViewModel, Student>();
 
+            CreateMap<TabletViewModel, Tablet>().ReverseMap();
+
             CreateMap<Collection, CollectionViewModel>()
                 .ConstructUsing(c=> new CollectionViewModel());
             CreateMap<CollectionViewModel, Collection>();

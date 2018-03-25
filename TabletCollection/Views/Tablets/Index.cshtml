@@ -1,18 +1,29 @@
-﻿@model IEnumerable<TabletCollection.Models.Tablet>
+﻿@model IEnumerable<TabletCollection.ViewModels.TabletViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <div class="row well">
-    <div class="offset-1 col-1">
-        <h2 class="text-primary">Tablets</h2>
+    <div class="row">
+        <div class="offset-1 col-1">
+            <h2 class="text-primary">Tablets</h2>
+        </div>
     </div>
-    <div class="col-8">
-        <span class="icon-input-btn">
-            <span class="glyphicon glyphicon-file"></span>
-            @Html.ActionLink("Create New", "Create", "Tablets", null, new { @class = "btn btn-primary btn-sm" })
-        </span>
+    <div class="row">
+        <div class="col-1 pull-left">
+            <span class="icon-input-btn">
+                <span class="glyphicon glyphicon-file"></span>
+                @Html.ActionLink("Create New", "Create", "Tablets", null, new { @class = "btn btn-primary btn-sm" })
+            </span>
+        </div>
+        @using (@Html.BeginForm(null, null, FormMethod.Get))
+        {
+            <div class="form-horizontal col-6 col-md-offset-6 pull-left">
+                @Html.Label("filter", "Toggle to show All or Collected Tablets Only:", new { @class = "label label-default" })
+                @Html.CheckBox("filter", true, new { data_toggle = "toggle", id = "filter", data_off = "All", data_on = "Not Collected", data_onstyle = "success", data_offstyle = "info", onchange = "this.form.submit()" })
+            </div>
+        }
     </div>
 </div>
 
