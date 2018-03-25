@@ -1,29 +1,38 @@
-﻿@model TabletCollection.Models.Collection
+﻿@model TabletCollection.ViewModels.CollectionViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = $"Details - {@Model.TabletTabletName}";
 }
 
-<h2>Details</h2>
-
+<div class="row well">
+    <div class="offset-1 col-1">
+        <h2 class="text-primary">Collection Details for: @Model.TabletTabletName</h2>
+    </div>
+    <div class="col-8 text-muted">
+        <p>
+            created by: @Model.GetCreatedByUserName created on: @Model.CreatedOn |
+            updated by: @Model.GetUpdatedByUserName updated on: @Model.UpdatedOn
+        </p>
+    </div>
+</div>
 <div>
-    <h4>Collection</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Student.ImportID)
+            @Html.DisplayNameFor(model => model.StudentFullName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Student.ImportID)
+            @Html.DisplayFor(model => model.StudentFullName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Tablet.TabletName)
+            @Html.DisplayNameFor(model => model.TabletTabletName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tablet.TabletName)
+            @Html.DisplayFor(model => model.TabletTabletName)
         </dd>
 
         <dt>
@@ -69,6 +78,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

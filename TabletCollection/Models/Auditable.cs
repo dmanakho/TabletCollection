@@ -11,11 +11,11 @@ namespace TabletCollection.Models
     {
         [ScaffoldColumn(false)]
         [StringLength(256)]
-        [DisplayName("Created By")]
+        [DisplayName("Collected By")]
         public string CreatedBy { get; set; }
 
         [ScaffoldColumn(false)]
-        [DisplayName("Created On")]
+        [DisplayName("Collected On")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedOn { get; set; }
@@ -35,6 +35,7 @@ namespace TabletCollection.Models
         [Timestamp]
         public Byte[] RowVersion { get; set; } //added for future councurrency check.
 
+        [DisplayName("Collected By")]
         public string GetCreatedByUserName
         {
             get

@@ -9,6 +9,7 @@ namespace TabletCollection.Infrastructure
 {
     public class SingleStudentTabletMapper
     {
+        private const int _numberOfMatchedCharacters = 12;
         private TabletCollectionDBContext db = new TabletCollectionDBContext();
 
         public string TabletName { get; }
@@ -44,16 +45,24 @@ namespace TabletCollection.Infrastructure
                     .FirstOrDefault()
                     .ToUpper();
 
+                var _fragment = getSearchString(userName);
                 var tablet = db.Tablets
-                .Where(t => t.TabletName.Contains(getSearchString(userName)))
-                .Select(t => t.TabletName)
-                .FirstOrDefault()
-                .ToUpper();
-                TabletName = tablet;
+                .Where(t => t.TabletName.Contains(_fragment))
+                .Select(t => new { t.TabletName, t.ID })
+                .FirstOrDefault();
+                
+                TabletName = tablet.TabletName.ToUpper();
+                TabletID = tablet.ID;
             }
             catch (ArgumentNullException)
             {
                 TabletName = string.Empty;
+                TabletID = null;
+            }
+            catch (NullReferenceException)
+            {
+                TabletName = string.Empty;
+                TabletID = null;
             }
 
         }
@@ -61,13 +70,14 @@ namespace TabletCollection.Infrastructure
         {
             return searchString
                 .Replace("_", "-")
-                .Substring(0, Math.Min(searchString.IndexOf("@"), 10))
+                .Substring(0, Math.Min(searchString.IndexOf("@"), _numberOfMatchedCharacters))
                 .ToUpper();
         }
     }
 
     public class StudentTabletMapper
     {
+        private const int _numberOfMatchedCharacters = 12;
         private TabletCollectionDBContext db = new TabletCollectionDBContext();
 
         public Dictionary<int, string> _stutablet { get; } = new Dictionary<int, string>();
@@ -118,7 +128,7 @@ namespace TabletCollection.Infrastructure
         {
             return userName
                 .Replace("_", "-")
-                .Substring(0, Math.Min(userName.IndexOf("@"), 10));
+                .Substring(0, Math.Min(userName.IndexOf("@"), _numberOfMatchedCharacters));
         }
 
     }

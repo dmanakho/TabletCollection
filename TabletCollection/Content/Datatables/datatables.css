@@ -4,10 +4,10 @@
  *
  * To rebuild or modify this file with the latest versions of the included
  * software please visit:
- *   https://datatables.net/download/#bs/jq-3.2.1/jszip-2.5.0/pdfmake-0.1.32/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/r-2.2.1/sc-1.4.4
+ *   https://datatables.net/download/#bs/jszip-2.5.0/pdfmake-0.1.32/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/r-2.2.1
  *
  * Included libraries:
- *   jQuery 3 3.2.1, JSZip 2.5.0, pdfmake 0.1.32, DataTables 1.10.16, Buttons 1.5.1, Column visibility 1.5.1, HTML5 export 1.5.1, Responsive 2.2.1, Scroller 1.4.4
+ *   JSZip 2.5.0, pdfmake 0.1.32, DataTables 1.10.16, Buttons 1.5.1, Column visibility 1.5.1, HTML5 export 1.5.1, Responsive 2.2.1
  */
 
 table.dataTable {
@@ -541,32 +541,6 @@ div.dtr-modal div.dtr-modal-background {
 }
 div.dtr-bs-modal table.table tr:first-child td {
   border-top: none;
-}
-
-
-div.DTS {
-  display: block !important;
-}
-div.DTS tbody th,
-div.DTS tbody td {
-  white-space: nowrap;
-}
-div.DTS div.DTS_Loading {
-  z-index: 1;
-}
-div.DTS div.dataTables_scrollBody {
-  background: repeating-linear-gradient(45deg, #edeeff, #edeeff 10px, white 10px, white 20px);
-}
-div.DTS div.dataTables_scrollBody table {
-  z-index: 2;
-}
-div.DTS div.dataTables_paginate,
-div.DTS div.dataTables_length {
-  display: none;
-}
-
-div.DTS tbody tr {
-  background-color: white;
 }
 
 

@@ -21,14 +21,19 @@ namespace TabletCollection
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/customscripts").Include(
-                "~/Content/DataTables/datatables.js"));
+                "~/Content/Select2/js/select2.js",
+               "~/Content/DataTables/datatables.js"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/cssstyles").Include(
                       "~/Content/Flatly/bootstrap-flatly.css",
                       "~/Content/DataTables/datatables.css",
+                      "~/Content/Select2/css/select2.css",
+                      "~/Content/Select2/select2-bootstrap.css",
                       "~/Content/site.css"));
             //bundles.Add(new StyleBundle("~/Content/css").Include(
             //          "~/Content/bootstrap.css",

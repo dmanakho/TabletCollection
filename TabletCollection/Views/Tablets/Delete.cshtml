@@ -6,12 +6,15 @@
 
 <div class="row well">
     <div class="offset-1 col-1">
-        <h2 class="text-primary">Deleting: @Model.TabletName</h2>
+        <h2 class="text-danger">Deleting: @Model.TabletName</h2>
     </div>
-    <div class="col-8">
-        <p>created by: updated by:</p>
+    <div class="col-8 text-muted">
+        <p>
+            created by: @Model.GetCreatedByUserName created on: @Model.CreatedOn |
+            updated by: @Model.GetUpdatedByUserName updated on: @Model.UpdatedOn
+        </p>
     </div>
-    <h3 class="text-danger">Are you sure?</h3>
+    <h3 class="text-danger">Are you sure? This will permanently delete the record</h3>
 </div>
 
 <div>

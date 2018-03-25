@@ -20,8 +20,9 @@ namespace TabletCollection.Controllers
         // GET: Collections
         public ActionResult Index()
         {
-            var collections = db.Collections.Include(c => c.Student).Include(c => c.Tablet);
-            return View(collections.ToList());
+            var collections = db.Collections.ToList();
+            var collectionsViewModel = Mapper.Map<List<CollectionViewModel>>(collections);
+            return View(collectionsViewModel);
         }
 
         // GET: Collections/Details/5
@@ -36,7 +37,8 @@ namespace TabletCollection.Controllers
             {
                 return HttpNotFound();
             }
-            return View(collection);
+            var collectionViewModel = Mapper.Map<CollectionViewModel>(collection);
+            return View(collectionViewModel);
         }
 
         // GET: Collections/Create
@@ -47,11 +49,11 @@ namespace TabletCollection.Controllers
                 return RedirectToAction("Index", "Students", null);
             }
 
-            var collection = new CollectionViewModel(studentID.Value);
+            var collectionViewModel = new CollectionViewModel(studentID.Value);
 
-            //ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID");
-            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName");
-            return View(collection);
+
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
+            return View(collectionViewModel);
         }
 
         // POST: Collections/Create
@@ -59,18 +61,29 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,IsStylus,IsAC,IsNegligence,ChargeNotes,Comments,TabletID,StudentID,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Collection collection)
+        public ActionResult Create(CollectionViewModel collectionViewModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Collections.Add(collection);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID", collection.StudentID);
-            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collection.TabletID);
-            return View(collection);
+                if (ModelState.IsValid)
+                {
+                    var collection = Mapper.Map<Collection>(collectionViewModel);
+                    db.Collections.Add(collection);
+                    db.SaveChanges();
+                    return RedirectToAction("Index","Students");
+                }
+            }
+            catch (DataException dex)
+            {
+                ModelState.AddModelError(string.Empty, $"Database Error occured Copy the error message and send it to Dima</br>: {dex.Message}. / {dex.InnerException.Message} / {dex.InnerException.InnerException.Message} ");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Error occured Copy the error message and send it to Dima</br>: {ex.Message}. + {ex.InnerException.Message} + {ex.InnerException.InnerException.Message}");
+            }
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
+            return View(collectionViewModel);
         }
 
         // GET: Collections/Edit/5
@@ -85,9 +98,10 @@ namespace TabletCollection.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID", collection.StudentID);
-            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collection.TabletID);
-            return View(collection);
+            var collectionViewModel = Mapper.Map<CollectionViewModel>(collection);
+
+            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
+            return View(collectionViewModel);
         }
 
         // POST: Collections/Edit/5
@@ -95,17 +109,17 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,IsStylus,IsAC,IsNegligence,ChargeNotes,Comments,TabletID,StudentID,CreatedBy,CreatedOn,UpdatedBy,UpdatedOn,RowVersion")] Collection collection)
+        public ActionResult Edit(CollectionViewModel collectionViewModel)
         {
             if (ModelState.IsValid)
             {
+                var collection = Mapper.Map<Collection>(collectionViewModel);
                 db.Entry(collection).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StudentID = new SelectList(db.Students, "ID", "ImportID", collection.StudentID);
-            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collection.TabletID);
-            return View(collection);
+           ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
+            return View(collectionViewModel);
         }
 
         // GET: Collections/Delete/5
@@ -120,7 +134,8 @@ namespace TabletCollection.Controllers
             {
                 return HttpNotFound();
             }
-            return View(collection);
+            var collectionViewModel = Mapper.Map<CollectionViewModel>(collection);
+            return View(collectionViewModel);
         }
 
         // POST: Collections/Delete/5

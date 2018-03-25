@@ -4,10 +4,15 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
+<div class="row well">
+    <div class="offset-1 col-1">
+        <h2 class="text-primary">Details: @Model.FullName</h2>
+    </div>
+    <div class="col-8">
+        <p>created by: updated by:</p>
+    </div>
+</div>
 <div>
-    <h4>Student</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>

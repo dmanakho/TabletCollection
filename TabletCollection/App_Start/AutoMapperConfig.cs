@@ -15,7 +15,8 @@ namespace TabletCollection
             CreateMap<Student, StudentViewModel>();
             CreateMap<StudentViewModel, Student>();
 
-            CreateMap<Collection, CollectionViewModel>();
+            CreateMap<Collection, CollectionViewModel>()
+                .ConstructUsing(c=> new CollectionViewModel());
             CreateMap<CollectionViewModel, Collection>();
         }
     }

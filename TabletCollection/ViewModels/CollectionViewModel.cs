@@ -6,32 +6,45 @@ using System.Web;
 using TabletCollection.Models;
 using TabletCollection.Infrastructure;
 using System.ComponentModel.DataAnnotations;
+using TabletCollection.DAL;
 
 namespace TabletCollection.ViewModels
 {
-    public class CollectionViewModel
+    
+
+    public class CollectionViewModel :Auditable, IValidatableObject
     {
         public CollectionViewModel()
         {
-                
+            IsStylus = true;
+            IsAC = true;
+            IsNegligence = false;
         }
+
         public CollectionViewModel(int studentID) :this()
         {
+            var students = db.Students.Where(s => s.ID == studentID).Single(); ;
+            StudentFullName = students.FullName;
+            StudentID = students.ID;
+
             var tabletFinder = new SingleStudentTabletMapper(StudentID);
 
             if (tabletFinder.TabletID.HasValue)
             {
                 TabletID = tabletFinder.TabletID.Value;
-                TabletName = tabletFinder.TabletName;
+                TabletTabletName = tabletFinder.TabletName;
             }
+
         }
+
+        private TabletCollectionDBContext db = new TabletCollectionDBContext();
 
         public int Id { get; set; }
 
         public int TabletID { get; set; }
 
         [DisplayName("Tablet")]
-        public string TabletName { get; set; }
+        public string TabletTabletName { get; set; }
 
         public int StudentID { get; set; }
 
@@ -47,12 +60,21 @@ namespace TabletCollection.ViewModels
         [DisplayName("Negligence")]
         public bool IsNegligence { get; set; }
 
-        [DisplayName("Why Charged?")]
+        [DisplayName("Reason for Negligence Charge")]
+        [DataType(DataType.MultilineText)]
         public string ChargeNotes { get; set; }
 
         [DisplayName("Comments")]
+        [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (String.IsNullOrEmpty(TabletTabletName))
+            {
+                yield return new ValidationResult("Student doesn't have matching tablet. Please select manually", new[] { "TabletID" });
 
+            }
+        }
     }
 }
