@@ -110,8 +110,11 @@ namespace TabletCollection.Controllers
                 return HttpNotFound();
             }
             var collectionViewModel = Mapper.Map<CollectionViewModel>(collection);
-
-            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
+            //viewbag will populate the drop down. I need "tablets" variable to limit the drop down to the tablets that weren't collected yet.
+            var collectedTabletsIDs = db.Collections.Where(t=>t.TabletID != collection.TabletID).Select(s => s.TabletID);
+            var tablets = db.Tablets.Where(t => !collectedTabletsIDs.Contains(t.ID)).ToList();
+            ViewBag.TabletID = new SelectList(tablets, "ID", "TabletName", collectionViewModel.TabletID);
+            
             return View(collectionViewModel);
         }
 
