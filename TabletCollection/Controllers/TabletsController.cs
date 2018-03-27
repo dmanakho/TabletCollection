@@ -29,7 +29,16 @@ namespace TabletCollection.Controllers
             }
             tablets = tablets.OrderBy(t=>t.TabletName);
             var tabletViewModels = Mapper.Map<List<TabletViewModel>>(tablets);
-           
+            //get collections IDs only when we display all tablets
+            if (!filter)
+            {
+                tabletViewModels.ForEach(t => t.CollectionID = db.Collections.Where(c => c.TabletID == t.ID).Select(c => c.Id).FirstOrDefault());
+                tabletViewModels.ForEach(t => t.IsTabletCollected = (t.CollectionID > 0) ? true : false);
+            }
+            //this is to show extra column in extra view for Collected tablets if all tablets are shown. Need to find a better solution perhaps.
+            ViewBag.Filter = filter;
+            //this line is to correctly set non-sorting column in DataTable.
+            ViewBag.ExtraColumn = filter ? 5 : 6;
             return View(tabletViewModels);
         }
 

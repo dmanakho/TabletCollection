@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201803231830063_RemovedNUllableFromForeignExField.Designer.cs">
       <DependentUpon>201803231830063_RemovedNUllableFromForeignExField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803270029448_IsPickedUpFiledAddedToTabletModel.cs" />
+    <Compile Include="Migrations\201803270029448_IsPickedUpFiledAddedToTabletModel.Designer.cs">
+      <DependentUpon>201803270029448_IsPickedUpFiledAddedToTabletModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Auditable.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -481,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803231830063_RemovedNUllableFromForeignExField.resx">
       <DependentUpon>201803231830063_RemovedNUllableFromForeignExField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803270029448_IsPickedUpFiledAddedToTabletModel.resx">
+      <DependentUpon>201803270029448_IsPickedUpFiledAddedToTabletModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

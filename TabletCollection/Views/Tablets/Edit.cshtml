@@ -28,60 +28,68 @@
     @Html.HiddenFor(m => m.UpdatedBy)
     @Html.HiddenFor(m => m.UpdatedOn)
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TabletName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TabletName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TabletName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SerialNo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SerialNo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AssetTag, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AssetTag, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AssetTag, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsPurchased, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsPurchased)
-                    @Html.ValidationMessageFor(model => model.IsPurchased, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="well well-sm form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <span class="icon-input-btn">
-                    <span class="glyphicon glyphicon-floppy-save"></span>
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </span>
-                <span class="icon-input-btn">
-                    <span class="glyphicon glyphicon-step-backward"></span>
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
-                </span>
-            </div>
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.TabletName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TabletName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TabletName, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SerialNo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SerialNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AssetTag, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AssetTag, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AssetTag, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsPurchased, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsPurchased)
+                @Html.ValidationMessageFor(model => model.IsPurchased, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsPickedUp, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsPickedUp)
+                @Html.ValidationMessageFor(model => model.IsPickedUp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="well well-sm form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <span class="icon-input-btn">
+                <span class="glyphicon glyphicon-floppy-save"></span>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </span>
+            <span class="icon-input-btn">
+                <span class="glyphicon glyphicon-step-backward"></span>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+            </span>
+        </div>
+
+    </div>
+</div>
 }
 
 

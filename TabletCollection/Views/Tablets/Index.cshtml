@@ -42,6 +42,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsPurchased)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPickedUp)
+            </th>
+            @if (!(bool)ViewBag.Filter)
+            {
+                <th>
+                    @Html.DisplayNameFor(m => m.IsTabletCollected)
+                </th>
+            }
             <th></th>
         </tr>
     </thead>
@@ -59,8 +68,24 @@
                     @Html.DisplayFor(modelItem => item.AssetTag)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsPurchased)
+                    @(item.IsPurchased ? "Yes" : "No")
                 </td>
+                <td>
+                    @(item.IsPickedUp ? "Yes" : "No")
+                </td>
+                @if (!(bool)ViewBag.Filter)
+                {
+                    <th>
+                        @if (item.IsTabletCollected)
+                        {
+                            @Html.ActionLink("Yes", "Details", "Collections", new { id = item.CollectionID }, new { target = "_blank" })
+                        }
+                        else
+                        {
+                                @:No
+                        }
+                    </th>
+                }
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-xs" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning btn-xs" })
@@ -87,7 +112,12 @@
                         'pdf'
                     ],
                     "columnDefs": [
-                        { "orderable": false, "targets": 4 }
+                        { "orderable": false, "targets": @ViewBag.ExtraColumn },
+                        {
+                            "targets": [1, 2],
+                            "visible": false,
+                            "searchable": false
+                        },
                     ],
                     "pagingType": "first_last_numbers",
 

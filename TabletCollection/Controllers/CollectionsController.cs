@@ -59,8 +59,11 @@ namespace TabletCollection.Controllers
                 collectionViewModel.Comments = $"Uh-Oh! Something went wrong!<br /> " +
                     $"The tablet is shown as collected. Conflicting collection ID: {checkIfCollected.Id}";
             }
+            //viewbag will populate the drop down. I need "tablets" variable to limit the drop down to the tablets that weren't collected yet.
+            var collectedTabletsIDs = db.Collections.Select(s => s.TabletID);
+            var tablets = db.Tablets.Where(s => !collectedTabletsIDs.Contains(s.ID)).ToList();
+            ViewBag.TabletID = new SelectList(tablets, "ID", "TabletName", collectionViewModel.TabletID);
 
-            ViewBag.TabletID = new SelectList(db.Tablets, "ID", "TabletName", collectionViewModel.TabletID);
             return View(collectionViewModel);
         }
 
