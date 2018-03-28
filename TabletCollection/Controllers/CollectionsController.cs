@@ -26,6 +26,15 @@ namespace TabletCollection.Controllers
             return View(collectionsViewModel);
         }
 
+        [ChildActionOnly]
+        public ActionResult _IndexPartial()
+        {
+            var collections = db.Collections.OrderByDescending(c => c.CreatedOn).Take(10);
+           
+            var collectionsViewModel = Mapper.Map<List<CollectionViewModel>>(collections.ToList());
+            return PartialView(collectionsViewModel);
+        }
+
         // GET: Collections/Details/5
         public ActionResult Details(int? id)
         {

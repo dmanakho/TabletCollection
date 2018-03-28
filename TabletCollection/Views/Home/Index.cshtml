@@ -22,7 +22,9 @@
     </div>
     <div class="col-md-6">
         <h2 class="text-info">Recently Collected Tablets</h2>
-        <p>list of 10 recently collected tablets</p>
+        <p>
+            @{Html.RenderAction(actionName: "_IndexPartial", controllerName: "Collections");}
+        </p>
     </div>
 
 </div>
