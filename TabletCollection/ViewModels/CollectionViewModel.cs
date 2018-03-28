@@ -70,9 +70,10 @@ namespace TabletCollection.ViewModels
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (String.IsNullOrEmpty(TabletTabletName))
+            //Don't have any custom validations... just throw a silly one.
+            if (!String.IsNullOrEmpty(TabletTabletName) && TabletTabletName.Length > 500)
             {
-                yield return new ValidationResult("Student doesn't have matching tablet. Please select manually", new[] { "TabletID" });
+                yield return new ValidationResult("Yo, that's a long name", new[] { "TabletID" });
 
             }
         }
