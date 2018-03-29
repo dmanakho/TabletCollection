@@ -1,0 +1,111 @@
+﻿@model IList<TabletCollection.ViewModels.TabletViewModel>
+@{
+    ViewBag.Title = "Bulk Edit";
+}
+
+<div class="row well">
+    <div class="offset-1 col-1">
+        <h2 class="text-primary">
+            <span class="glyphicon glyphicon-edit">&nbsp;</span> - Purchase Bulk Edit
+        </h2>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <table id="indexTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().TabletName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().SerialNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().AssetTag)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().IsPurchased)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().IsPickedUp)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+
+                    @Html.HiddenFor(m => m[i].ID)
+                    @Html.HiddenFor(m => m[i].RowVersion)
+                    @Html.HiddenFor(m => m[i].CreatedBy)
+                    @Html.HiddenFor(m => m[i].CreatedOn)
+                    @Html.HiddenFor(m => m[i].UpdatedBy)
+                    @Html.HiddenFor(m => m[i].UpdatedOn)
+                    @Html.HiddenFor(m => m[i].TabletName)
+                    @Html.HiddenFor(m => m[i].SerialNo)
+                    @Html.HiddenFor(m => m[i].AssetTag)
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model[i].TabletName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model[i].SerialNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model[i].AssetTag)
+                        </td>
+                        <td>
+                            <label class="cellCheckBox">
+                                @Html.CheckBoxFor(model => model[i].IsPurchased, new { @class = "scaledCheckBox" })
+                            </label>
+                        </td>
+                        <td>
+                            <label class="cellCheckBox">
+
+                                @Html.CheckBoxFor(model => model[i].IsPickedUp, new { @class = "scaledCheckBox" })
+                            </label>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <div class="well well-sm form-group">
+            <div class="col-md-10">
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-floppy-save"></span>
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </span>
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+                </span>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#indexTable").DataTable(
+                {
+                    // "dom": 'lfBpt<pi>',
+                    "pagingType": "first_last_numbers",
+                    "columnDefs": [
+                        { "orderable": false, "targets": [3,4] },
+
+                    ],
+
+
+                }
+            );
+        });
+    </script>
+
+}

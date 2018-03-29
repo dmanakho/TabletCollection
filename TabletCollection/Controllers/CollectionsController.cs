@@ -92,6 +92,7 @@ namespace TabletCollection.Controllers
                     db.Collections.Add(collection);
                     db.SaveChanges();
                     return RedirectToAction("Index", "Students");
+                    //return new RedirectResult(Request.UrlReferrer.AbsoluteUri);
                 }
             }
             catch (DataException dex)

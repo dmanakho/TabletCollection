@@ -75,7 +75,7 @@
                 </td>
                 @if (!(bool)ViewBag.Filter)
                 {
-                    <th>
+                    <td>
                         @if (item.IsTabletCollected)
                         {
                             @Html.ActionLink("Yes", "Details", "Collections", new { id = item.CollectionID }, new { target = "_blank" })
@@ -84,7 +84,7 @@
                         {
                                 @:No
                         }
-                    </th>
+                    </td>
                 }
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-xs" })

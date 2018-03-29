@@ -45,4 +45,13 @@ textarea {
         top: 30%;
     }
 
+.scaledCheckBox {
+    transform: scale(2.0);
+    font-size:350%;
+}
+
+.cellCheckBox {
+    display: block;
+    text-align: center;
+}
 
