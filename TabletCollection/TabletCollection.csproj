@@ -194,6 +194,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\StudentTabletMapper.cs" />
+    <Compile Include="Infrastructure\Utilities.cs" />
     <Compile Include="Migrations\201803231736188_NewInitialwithOneToMany.cs" />
     <Compile Include="Migrations\201803231736188_NewInitialwithOneToMany.Designer.cs">
       <DependentUpon>201803231736188_NewInitialwithOneToMany.cs</DependentUpon>
