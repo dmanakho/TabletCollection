@@ -215,6 +215,7 @@
     <Compile Include="Models\Tablet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BFFViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\CollectionViewModel.cs" />
     <Compile Include="ViewModels\TabletViewModel.cs" />
@@ -472,6 +473,8 @@
     <Content Include="Views\Students\_StudentsPartial.cshtml" />
     <Content Include="Views\Collections\_IndexPartial.cshtml" />
     <Content Include="Views\Tablets\BulkEdit.cshtml" />
+    <Content Include="Views\Collections\BFFReport.cshtml" />
+    <Content Include="Views\Shared\_LayoutBFF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

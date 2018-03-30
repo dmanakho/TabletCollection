@@ -191,6 +191,15 @@ namespace TabletCollection.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult BFFReport()
+        {
+            var collections = db.Collections.Include(c=>c.Student).Include(c=>c.Tablet).OrderBy(t=>t.Tablet.TabletName);
+
+            var _BFFViewModel = Mapper.Map<List<BFFViewModel>>(collections);
+            return View("BFFReport", "~/Views/Shared/_LayoutBFF.cshtml", _BFFViewModel);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

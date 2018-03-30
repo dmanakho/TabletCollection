@@ -1,0 +1,177 @@
+﻿@model IEnumerable<TabletCollection.ViewModels.BFFViewModel>
+
+@{
+    ViewBag.Title = "Collections";
+}
+
+<div class="row well">
+    <div class="offset-1 col-1">
+        <h2 class="text-primary">Big Fat Flat Report</h2>
+    </div>
+</div>
+
+<table id="indexTable" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            @*Student Section*@
+            <th>
+                @Html.DisplayNameFor(m => m.StudentID)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(m => m.StudentFullName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(m => m.StudentUserName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(m => m.StudentClassOf)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(m => m.StudentForeignExchangeBound)
+            </th>
+            @*Tablet Section*@
+            <th>
+                @Html.DisplayNameFor(m => m.TabletID)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(m => m.TabletTabletName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.TabletAssetTag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.TabletSerialNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.TabletIsPickedUp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.TabletIsPurchased)
+            </th>
+
+            @*Collection Section*@
+            <th>
+                @Html.DisplayNameFor(m => m.IsStylus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.IsAC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.IsNegligence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.ChargeNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.CreatedBy)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentFullName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentUserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentClassOf)
+                </td>
+
+                <td>
+
+                    @(item.StudentForeignExchangeBound ? "Yes" : "No")
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TabletID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TabletTabletName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TabletAssetTag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TabletSerialNo)
+                </td>
+                <td>
+                    @(item.TabletIsPickedUp ? "Yes" : "No")
+                </td>
+                <td>
+                    @(item.TabletIsPurchased ? "Yes" : "No")
+                </td>
+                <td>
+                    @(item.IsStylus ? "Yes" : "No")
+                </td>
+                <td>
+                    @(item.IsAC ? "Yes" : "No")
+                </td>
+                <td>
+                    @(item.IsNegligence ? "Yes" : "No")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChargeNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GetCreatedByUserName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $("#indexTable").DataTable(
+                {
+                    // "dom": 'lfBpt<pi>',
+                    "dom":
+                        "<'row'<'col-sm-3 text-warning'l><'col-sm-3 text-primary'f><'col-sm-6'p>>" +
+                        "<'row'<'col-sm-12'tr>>" +
+                        "<'row'<'col-sm-4 text-info'i><'col-sm-3 text-center'B><'col-sm-5'p>>",
+                    buttons: [
+                        'copy',
+                        'excel',
+                        'pdf'
+                    ],
+
+                    "pagingType": "first_last_numbers",
+
+                }
+            );
+        });
+    </script>
+}

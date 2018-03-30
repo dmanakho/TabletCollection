@@ -20,6 +20,8 @@ namespace TabletCollection
             CreateMap<Collection, CollectionViewModel>()
                 .ConstructUsing(c=> new CollectionViewModel());
             CreateMap<CollectionViewModel, Collection>();
+
+            CreateMap<Collection, BFFViewModel>().ReverseMap();
         }
     }
 }
