@@ -25,9 +25,12 @@ namespace TabletCollection
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/customscripts").Include(
+                "~/Scripts/jquery-ui.js",
+                "~/Scripts/Paging.js",
                 "~/Content/Select2/js/select2.js",
                "~/Content/DataTables/datatables.js",
                "~/Content/bootstrap-toggle-master/js/bootstrap-toggle.js",
+               "~/Content/JQueryDataTablesCheckBoxes/js/dataTables.checkboxes.js",
                "~/Scripts/Site.js"
                 ));
 
@@ -37,6 +40,7 @@ namespace TabletCollection
                       "~/Content/Select2/css/select2.css",
                       "~/Content/Select2/select2-bootstrap.css",
                       "~/Content/bootstrap-toggle-master/css/bootstrap-toggle.css",
+                      "~/Content/JQueryDataTablesCheckBoxes/css/dataTables.checkboxes.css",
                       "~/Content/site.css"));
             //bundles.Add(new StyleBundle("~/Content/css").Include(
             //          "~/Content/bootstrap.css",

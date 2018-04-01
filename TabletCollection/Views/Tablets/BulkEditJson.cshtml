@@ -1,0 +1,148 @@
+﻿@model IList<TabletCollection.ViewModels.TabletViewModel>
+@{
+    ViewBag.Title = "Bulk Edit";
+}
+
+<div class="row well">
+    <div class="offset-1 col-1">
+        <h2 class="text-primary">
+            <span class="glyphicon glyphicon-edit">&nbsp;</span> - Purchase Bulk Edit
+        </h2>
+    </div>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "batchUpdate" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            @Html.HiddenFor(m => m[i].ID)
+            @Html.HiddenFor(m => m[i].RowVersion)
+            @Html.HiddenFor(m => m[i].CreatedBy)
+            @Html.HiddenFor(m => m[i].CreatedOn)
+            @Html.HiddenFor(m => m[i].UpdatedBy)
+            @Html.HiddenFor(m => m[i].UpdatedOn)
+            @Html.HiddenFor(m => m[i].TabletName)
+            @Html.HiddenFor(m => m[i].SerialNo)
+            @Html.HiddenFor(m => m[i].AssetTag)
+            @Html.HiddenFor(m => m[i].IsPickedUp)
+
+        }
+        <table id="indexTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Tablet Name
+                    </th>
+                    <th>
+                        Serial Number
+                    </th>
+                    <th>
+                        Asset Tag
+                    </th>
+                    <th>
+                        Family Purchased
+                    </th>
+                </tr>
+            </thead>
+
+
+        </table>
+        <div class="well well-sm form-group">
+            <div class="col-md-10">
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-floppy-save"></span>
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </span>
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+                </span>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+
+        var simple_checkbox = function (data, type, full, meta) {
+            var is_checked = data == true ? "checked" : "";
+            return '<input type="checkbox" class="checkbox" ' +
+                is_checked + ' />';
+        }
+
+        $(document).ready(function () {
+            var table = $("#indexTable").DataTable(
+                {
+                    // "dom": 'lfBpt<pi>',
+                    "pagingType": "first_last_numbers",
+                    "ajax": {
+                        url: '/Tablets/BulkEditJsonStream',
+                        dataSrc: '',
+                    },
+                    "columns": [
+                        { data:'TabletName' },
+                        { data: 'SerialNo'},
+                        { data: 'AssetTag'},
+                        { data: 'IsPurchased', 'render': simple_checkbox},
+                    ],
+                    'select': {
+                        'style': 'multi'
+                    },
+
+                }
+            );
+
+            $('#batchUpdate').on('submit', function (e) {
+                // Prevent actual form submission
+                e.preventDefault();
+
+                // Serialize form data
+                var data = table.$('input').serialize();
+
+                //alert(data);
+                // Submit form data via Ajax
+                $.ajax({
+                    contentType: "application/json",
+                    type: 'put',
+                    url: 'echo_request.php',
+                    data: data
+                });
+            });
+            // Handle form submission event
+            $('#batchUpdate1').on('submit', function (e) {
+                var form = this;
+               
+                // Encode a set of form elements from all pages as an array of names and values
+                var params = table.$('input').serializeArray();
+               
+                // Iterate over all form elements
+                $.each(params, function () {
+                    // If element doesn't exist in DOM
+                    if (!$.contains(document, form[this.name])) {
+                        // Create a hidden element
+                        $(form).append(
+                            $('<input>')
+                                .attr('type', 'hidden')
+                                .attr('name', this.name)
+                                .val(this.value)
+                        );
+                    }
+                });
+               
+            });
+        });
+
+
+        function cursor_wait() {
+            document.body.style.cursor = 'wait';
+        }
+
+        function cursor_clear() {
+            document.body.style.cursor = 'default';
+        }
+    </script>
+
+}

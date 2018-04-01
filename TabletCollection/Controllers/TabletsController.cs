@@ -179,5 +179,48 @@ namespace TabletCollection.Controllers
             }
             return View(tabletsViewModel);
         }
+
+        public JsonResult BulkEditJsonStream()
+        {
+            var tablets = db.Tablets.OrderBy(t => t.TabletName).ToList();
+
+            var tabletViewModels = Mapper.Map<List<TabletViewModel>>(tablets);
+            return Json(tabletViewModels, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult BulkEditJson()
+        {
+            var tablets = db.Tablets.OrderBy(t => t.TabletName).ToList();
+
+            var tabletViewModels = Mapper.Map<List<TabletViewModel>>(tablets);
+            return View(tabletViewModels);
+        }
+
+        public ActionResult BulkEditPg()
+        {
+            var tablets = db.Tablets.OrderBy(t => t.TabletName).ToList();
+
+            var tabletViewModels = Mapper.Map<List<TabletViewModel>>(tablets);
+            return View(tabletViewModels);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BulkEditPg(IList<TabletViewModel> tabletsViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var tablets = Mapper.Map<IList<Tablet>>(tabletsViewModel);
+
+                foreach (var tablet in tablets)
+                {
+                    db.Entry(tablet).State = EntityState.Modified;
+
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(tabletsViewModel);
+        }
     }
 }
