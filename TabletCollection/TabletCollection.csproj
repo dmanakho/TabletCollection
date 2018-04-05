@@ -204,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AutoMapperResolver.cs" />
     <Compile Include="Infrastructure\StudentTabletMapper.cs" />
     <Compile Include="Infrastructure\Utilities.cs" />
     <Compile Include="Migrations\201803231736188_NewInitialwithOneToMany.cs" />
