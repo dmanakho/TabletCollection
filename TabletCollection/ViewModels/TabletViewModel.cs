@@ -26,14 +26,21 @@ namespace TabletCollection.ViewModels
         [DisplayName("Asset Tag"), MaxLength(20)]
         public string AssetTag { get; set; }
 
-        [DisplayName("Family Purchased")]
+        [DisplayName("Fam. Purchased")]
         public bool IsPurchased { get; set; }
+
+        [DisplayName("Addtl. Purch.")]
+        public bool IsExtraPurchase { get; set; }
 
         [DisplayName("Collected")]
         public bool IsTabletCollected { get; set; }
 
         [DisplayName("Picked Up")]
         public bool IsPickedUp { get; set; }
+
+        [DisplayName("Notes"), MaxLength(500)]
+        [DataType(DataType.MultilineText)]
+        public string Notes { get; set; }
 
         public int CollectionID { get; set; }
     }

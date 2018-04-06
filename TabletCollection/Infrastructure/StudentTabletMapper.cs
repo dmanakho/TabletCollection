@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using TabletCollection.DAL;
+using TabletCollection.Models;
 
 namespace TabletCollection.Infrastructure
 {
@@ -14,6 +15,10 @@ namespace TabletCollection.Infrastructure
 
         public string TabletName { get; }
         public int? TabletID { get; }
+        public bool IsPurchased { get; }
+        public string Notes { get; }
+
+        public Tablet Tablet { get; }
 
         public SingleStudentTabletMapper(string userName)
         {
@@ -21,10 +26,11 @@ namespace TabletCollection.Infrastructure
             {
                 var tablet = db.Tablets
                 .Where(t => t.TabletName.Contains(getSearchString(userName)))
-                .Select(t => new { t.TabletName, t.ID })
+                .Select(t => new { t.TabletName, t.ID, t.IsPurchased})
                 .FirstOrDefault();
                 TabletName = tablet.TabletName.ToUpper();
                 TabletID = tablet.ID;
+                IsPurchased = tablet.IsPurchased;
 
             }
             catch (ArgumentNullException)
@@ -48,21 +54,25 @@ namespace TabletCollection.Infrastructure
                 var _fragment = getSearchString(userName);
                 var tablet = db.Tablets
                 .Where(t => t.TabletName.Contains(_fragment))
-                .Select(t => new { t.TabletName, t.ID })
                 .FirstOrDefault();
                 
                 TabletName = tablet.TabletName.ToUpper();
                 TabletID = tablet.ID;
+                IsPurchased = tablet.IsPurchased;
+                Notes = tablet.Notes;
+                Tablet = tablet;
             }
             catch (ArgumentNullException)
             {
                 TabletName = string.Empty;
                 TabletID = null;
+                IsPurchased = false;
             }
             catch (NullReferenceException)
             {
                 TabletName = string.Empty;
                 TabletID = null;
+                IsPurchased = false;
             }
 
         }

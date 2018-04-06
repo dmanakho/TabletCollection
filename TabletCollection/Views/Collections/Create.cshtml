@@ -22,6 +22,9 @@
     @Html.HiddenFor(m => m.TabletTabletName)
     @Html.HiddenFor(m => m.StudentFullName)
     @Html.HiddenFor(m => m.StudentID)
+    @Html.HiddenFor(m => m.TabletNotes)
+    @Html.HiddenFor(m => m.TabletIsPurchased)
+
     <div class="form-horizontal col-12">
 
         <hr />
@@ -42,27 +45,43 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsStylus, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsStylus)
-                    @Html.ValidationMessageFor(model => model.IsStylus, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsStylus, htmlAttributes: new { @class = "control-label col-md-8" })
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsStylus)
+                            @Html.ValidationMessageFor(model => model.IsStylus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsAC, htmlAttributes: new { @class = "control-label col-md-8" })
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsAC)
+                            @Html.ValidationMessageFor(model => model.IsAC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsAC, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsAC)
-                    @Html.ValidationMessageFor(model => model.IsAC, "", new { @class = "text-danger" })
-                </div>
+            <div class="form-group col-md-4">
+                @*@Html.LabelFor(model => model.TabletIsPurchased, htmlAttributes: new { @class = "control-label col-md-8" })*@
+                @if (Model.TabletIsPurchased == true)
+                {
+                    <p class="text-success">
+                        <span class="glyphicon glyphicon-exclamation-sign">&nbsp;</span>
+                        Family purchased the computer.<br />
+                        Please set the unit aside to expedite the re-imaging!
+                    </p>
+                }
+            </div>
+            <div class="form-group col-md-5">
+                @Html.LabelFor(model => model.TabletNotes, htmlAttributes: new { @class = "control-label col-md-3" })
+                @Html.DisplayTextFor(model => model.TabletNotes)
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.IsNegligence, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -90,20 +109,20 @@
         </div>
 
         <div class="form-group well well-sm">
-                <div class="col-md-offset-2 col-md-10">
-                    <span class="icon-input-btn">
-                        <span class="glyphicon glyphicon-floppy-saved"></span>
-                        <input type="submit" value="Collect" class="btn btn-primary" />
-                    </span>
-                    <span class="icon-input-btn">
-                        <span class="glyphicon glyphicon-user"></span>
-                        @Html.ActionLink("To Student List", "Index", "Students", null, new { @class = "btn btn-default" })
-                    </span>
-                    <span class="icon-input-btn">
-                        <span class="glyphicon glyphicon-list"></span>
-                        @Html.ActionLink("To Collections List", "Index", null, new { @class = "btn btn-default" })
-                    </span>
-                </div>
+            <div class="col-md-offset-2 col-md-10">
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-floppy-saved"></span>
+                    <input type="submit" value="Collect" class="btn btn-primary" />
+                </span>
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-user"></span>
+                    @Html.ActionLink("To Student List", "Index", "Students", null, new { @class = "btn btn-default" })
+                </span>
+                <span class="icon-input-btn">
+                    <span class="glyphicon glyphicon-list"></span>
+                    @Html.ActionLink("To Collections List", "Index", null, new { @class = "btn btn-default" })
+                </span>
+            </div>
         </div>
     </div>
 }

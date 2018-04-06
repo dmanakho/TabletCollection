@@ -43,7 +43,13 @@
                 @Html.DisplayNameFor(model => model.IsPurchased)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.IsExtraPurchase)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.IsPickedUp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
             </th>
             @if (!(bool)ViewBag.Filter)
             {
@@ -51,6 +57,7 @@
                     @Html.DisplayNameFor(m => m.IsTabletCollected)
                 </th>
             }
+
             <th></th>
         </tr>
     </thead>
@@ -71,7 +78,13 @@
                     @(item.IsPurchased ? "Yes" : "No")
                 </td>
                 <td>
+                    @(item.IsExtraPurchase ? "Yes" : "No")
+                </td>
+                <td>
                     @(item.IsPickedUp ? "Yes" : "No")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
                 </td>
                 @if (!(bool)ViewBag.Filter)
                 {
@@ -82,10 +95,11 @@
                         }
                         else
                         {
-                                @:No
+                            @:No
                         }
                     </td>
                 }
+
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-xs" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning btn-xs" })
@@ -97,9 +111,12 @@
 
 @section scripts
 {
+
     <script>
+        // ViewBag.ExtraColumn
+        var table;
         $(document).ready(function () {
-            $("#indexTable").DataTable(
+            table = $("#indexTable").DataTable(
                 {
                     // "dom": 'lfBpt<pi>',
                     "dom":
@@ -112,9 +129,9 @@
                         'pdf'
                     ],
                     "columnDefs": [
-                        { "orderable": false, "targets": @ViewBag.ExtraColumn },
+                        { "orderable": false, "targets": @ViewBag.ExtraColumn  },
                         {
-                            "targets": [2],
+                            "targets": [2, 6],
                             "visible": false,
                             "searchable": false
                         },
@@ -124,6 +141,7 @@
                 }
             );
         });
+        console.log(table.columns()[0].length);
     </script>
 
 }

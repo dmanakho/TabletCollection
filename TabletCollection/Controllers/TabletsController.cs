@@ -38,7 +38,7 @@ namespace TabletCollection.Controllers
             //this is to show extra column in extra view for Collected tablets if all tablets are shown. Need to find a better solution perhaps.
             ViewBag.Filter = filter;
             //this line is to correctly set non-sorting column in DataTable.
-            ViewBag.ExtraColumn = filter ? 5 : 6;
+            ViewBag.ExtraColumn = filter ? 7 : 8;
             return View(tabletViewModels);
         }
 

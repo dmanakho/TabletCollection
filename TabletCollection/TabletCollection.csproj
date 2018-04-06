@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201803270029448_IsPickedUpFiledAddedToTabletModel.Designer.cs">
       <DependentUpon>201803270029448_IsPickedUpFiledAddedToTabletModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.cs" />
+    <Compile Include="Migrations\201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.Designer.cs">
+      <DependentUpon>201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Auditable.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -513,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803270029448_IsPickedUpFiledAddedToTabletModel.resx">
       <DependentUpon>201803270029448_IsPickedUpFiledAddedToTabletModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.resx">
+      <DependentUpon>201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

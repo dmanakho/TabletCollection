@@ -25,11 +25,17 @@ namespace TabletCollection.Models
         [DisplayName("Asset Tag"), MaxLength(20)]
         public string AssetTag { get; set; }
 
-        [DisplayName("Family Purchased")]
+        [DisplayName("Fam. Purchased")]
         public bool IsPurchased { get; set; }
+
+        [DisplayName("Addtl. Purch.")]
+        public bool IsExtraPurchase { get; set; }
 
         [DisplayName("Purchased and PickedUp")]
         public bool IsPickedUp { get; set; }
+
+        [MaxLength(500)]
+        public string Notes { get; set; }
 
         public virtual ICollection<Collection> Collections { get; set; }
     }

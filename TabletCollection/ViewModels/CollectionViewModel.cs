@@ -33,6 +33,8 @@ namespace TabletCollection.ViewModels
             {
                 TabletID = tabletFinder.TabletID.Value;
                 TabletTabletName = tabletFinder.TabletName;
+                TabletIsPurchased = tabletFinder.IsPurchased;
+                TabletNotes = tabletFinder.Tablet.Notes;
             }
 
         }
@@ -45,6 +47,13 @@ namespace TabletCollection.ViewModels
 
         [DisplayName("Tablet")]
         public string TabletTabletName { get; set; }
+
+        [DisplayName("Fam. Purchased")]
+        public bool TabletIsPurchased { get; set; }
+
+        [DisplayName("Tablet Notes"), MaxLength(500)]
+        [DataType(DataType.MultilineText)]
+        public string TabletNotes { get; set; }
 
         public int StudentID { get; set; }
 
@@ -60,11 +69,11 @@ namespace TabletCollection.ViewModels
         [DisplayName("Negligence")]
         public bool IsNegligence { get; set; }
 
-        [DisplayName("Reason for Negligence Charge")]
+        [DisplayName("Reason for Negligence Charge"), MaxLength(500)]
         [DataType(DataType.MultilineText)]
         public string ChargeNotes { get; set; }
 
-        [DisplayName("Comments")]
+        [DisplayName("Comments"), MaxLength(500)]
         [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
 
