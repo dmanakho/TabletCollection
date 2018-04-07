@@ -27,6 +27,13 @@ namespace TabletCollection.ViewModels
         [DisplayName("Purchased")]
         public bool TabletIsPurchased { get; set; }
 
+        [DisplayName("Addtl. Purch.")]
+        public bool TabletIsExtraPurchase { get; set; }
+
+        [DisplayName("Tablet Notes"), MaxLength(500)]
+        [DataType(DataType.MultilineText)]
+        public string TabletNotes { get; set; }
+
         [DisplayName("PickedUp")]
         public bool TabletIsPickedUp { get; set; }
 
@@ -61,6 +68,8 @@ namespace TabletCollection.ViewModels
         
         [DisplayName("Class Of")]
         public int? StudentClassOf { get; set; }
+
+
 
     }
 }

@@ -53,7 +53,12 @@
             <th>
                 @Html.DisplayNameFor(m => m.TabletIsPurchased)
             </th>
-
+            <th>
+                @Html.DisplayNameFor(m => m.TabletIsExtraPurchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.TabletNotes)
+            </th>
             @*Collection Section*@
             <th>
                 @Html.DisplayNameFor(m => m.IsStylus)
@@ -82,70 +87,76 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentID)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentFullName)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentFullName)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentUserName)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentUserName)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentClassOf)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentClassOf)
+            </td>
 
-                <td>
+            <td>
 
-                    @(item.StudentForeignExchangeBound ? "Yes" : "No")
-                </td>
+                @(item.StudentForeignExchangeBound ? "Yes" : "No")
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.TabletID)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TabletID)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.TabletTabletName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TabletAssetTag)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TabletSerialNo)
-                </td>
-                <td>
-                    @(item.TabletIsPickedUp ? "Yes" : "No")
-                </td>
-                <td>
-                    @(item.TabletIsPurchased ? "Yes" : "No")
-                </td>
-                <td>
-                    @(item.IsStylus ? "Yes" : "No")
-                </td>
-                <td>
-                    @(item.IsAC ? "Yes" : "No")
-                </td>
-                <td>
-                    @(item.IsNegligence ? "Yes" : "No")
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ChargeNotes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comments)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GetCreatedByUserName)
-                </td>
-            </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TabletTabletName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TabletAssetTag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TabletSerialNo)
+            </td>
+            <td>
+                @(item.TabletIsPickedUp ? "Yes" : "No")
+            </td>
+            <td>
+                @(item.TabletIsPurchased ? "Yes" : "No")
+            </td>
+            <td>
+                @(item.TabletIsExtraPurchase ? "Yes" : "No")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TabletNotes)
+            </td>
+            <td>
+                @(item.IsStylus ? "Yes" : "No")
+            </td>
+            <td>
+                @(item.IsAC ? "Yes" : "No")
+            </td>
+            <td>
+                @(item.IsNegligence ? "Yes" : "No")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChargeNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GetCreatedByUserName)
+            </td>
+        </tr>
         }
     </tbody>
 </table>
