@@ -18,7 +18,7 @@ namespace TabletCollection.Controllers
         private TabletCollectionDBContext db = new TabletCollectionDBContext();
 
         // GET: Tablets
-        public ActionResult Index(bool filter = true)
+        public ActionResult Index(bool filter = false)
         {
             var tablets = from t in db.Tablets select t;
             if (filter)
@@ -38,7 +38,7 @@ namespace TabletCollection.Controllers
             //this is to show extra column in extra view for Collected tablets if all tablets are shown. Need to find a better solution perhaps.
             ViewBag.Filter = filter;
             //this line is to correctly set non-sorting column in DataTable.
-            ViewBag.ExtraColumn = filter ? 7 : 8;
+            ViewBag.ExtraColumn = filter ? 8 : 9;
             return View(tabletViewModels);
         }
 

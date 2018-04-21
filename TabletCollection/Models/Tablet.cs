@@ -34,6 +34,9 @@ namespace TabletCollection.Models
         [DisplayName("Purchased and PickedUp")]
         public bool IsPickedUp { get; set; }
 
+        [DisplayName("Lenovo Buyout")]
+        public bool IsVendorBuyout { get; set; }
+
         [MaxLength(500)]
         public string Notes { get; set; }
 

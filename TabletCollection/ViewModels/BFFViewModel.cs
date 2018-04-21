@@ -37,6 +37,9 @@ namespace TabletCollection.ViewModels
         [DisplayName("PickedUp")]
         public bool TabletIsPickedUp { get; set; }
 
+        [DisplayName("Lenovo Buyout")]
+        public bool TabletIsVendorBuyout { get; set; }
+
         [DisplayName("Stylus")]
         public bool IsStylus { get; set; }
 

@@ -21,7 +21,7 @@
         {
             <div class="form-horizontal col-6 col-md-offset-6 pull-left">
                 @Html.Label("filter", "Toggle to show All or Still to be Collected Tablets:", new { @class = "label label-default" })
-                @Html.CheckBox("filter", true, new { data_toggle = "toggle", id = "filter", data_off = "All", data_on = "Not Collected", data_onstyle = "success", data_offstyle = "info", onchange = "this.form.submit()" })
+                @Html.CheckBox("filter", false, new { data_toggle = "toggle", id = "filter", data_off = "All", data_on = "Not Collected", data_onstyle = "success", data_offstyle = "info", onchange = "this.form.submit()" })
             </div>
         }
     </div>
@@ -47,6 +47,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsPickedUp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVendorBuyout)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Notes)
@@ -84,6 +87,9 @@
                     @(item.IsPickedUp ? "Yes" : "No")
                 </td>
                 <td>
+                    @(item.IsVendorBuyout ? "Yes" : "No")
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Notes)
                 </td>
                 @if (!(bool)ViewBag.Filter)
@@ -96,7 +102,7 @@
                         else
                         {
                             @:No
-                        }
+    }
                     </td>
                 }
 
@@ -131,7 +137,7 @@
                     "columnDefs": [
                         { "orderable": false, "targets": @ViewBag.ExtraColumn  },
                         {
-                            "targets": [2, 6],
+                            "targets": [2, 7],
                             "visible": false,
                             "searchable": false
                         },

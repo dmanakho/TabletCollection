@@ -57,6 +57,9 @@
                 @Html.DisplayNameFor(m => m.TabletIsExtraPurchase)
             </th>
             <th>
+                @Html.DisplayNameFor(m => m.TabletIsVendorBuyout)
+            </th>
+            <th>
                 @Html.DisplayNameFor(m => m.TabletNotes)
             </th>
             @*Collection Section*@
@@ -131,6 +134,9 @@
             </td>
             <td>
                 @(item.TabletIsExtraPurchase ? "Yes" : "No")
+            </td>
+            <td>
+                @(item.TabletIsVendorBuyout ? "Yes" : "No")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TabletNotes)

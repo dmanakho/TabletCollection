@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 @Html.LabelFor(model => model.IsPurchased, htmlAttributes: new { @class = "control-label col-md-8" })
                 <div class="col-md-4">
                     <div class="checkbox">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group  col-md-4">
+            <div class="form-group  col-md-3">
                 @Html.LabelFor(model => model.IsExtraPurchase, htmlAttributes: new { @class = "control-label col-md-8" })
                 <div class="col-md-4">
                     <div class="checkbox">
@@ -88,12 +88,21 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group  col-md-4">
+            <div class="form-group  col-md-3">
                 @Html.LabelFor(model => model.IsPickedUp, htmlAttributes: new { @class = "control-label col-md-8" })
                 <div class="col-md-4">
                     <div class="checkbox">
                         @Html.EditorFor(model => model.IsPickedUp)
                         @Html.ValidationMessageFor(model => model.IsPickedUp, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group  col-md-3">
+                @Html.LabelFor(model => model.IsVendorBuyout, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-4">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.IsVendorBuyout)
+                        @Html.ValidationMessageFor(model => model.IsVendorBuyout, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>

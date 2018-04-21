@@ -38,6 +38,9 @@ namespace TabletCollection.ViewModels
         [DisplayName("Picked Up")]
         public bool IsPickedUp { get; set; }
 
+        [DisplayName("Lenovo Buyout")]
+        public bool IsVendorBuyout { get; set; }
+
         [DisplayName("Notes"), MaxLength(500)]
         [DataType(DataType.MultilineText)]
         public string Notes { get; set; }

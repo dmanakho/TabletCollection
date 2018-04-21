@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.Designer.cs">
       <DependentUpon>201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804212156468_LenovoBuyoutBoolean.cs" />
+    <Compile Include="Migrations\201804212156468_LenovoBuyoutBoolean.Designer.cs">
+      <DependentUpon>201804212156468_LenovoBuyoutBoolean.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Auditable.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -520,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.resx">
       <DependentUpon>201804052303022_AddedExtraPurchaseAndNotesFieldtoTabletModelRestrictedCommentsNotesForCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804212156468_LenovoBuyoutBoolean.resx">
+      <DependentUpon>201804212156468_LenovoBuyoutBoolean.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
