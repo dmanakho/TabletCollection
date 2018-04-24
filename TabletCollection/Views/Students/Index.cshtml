@@ -59,7 +59,7 @@
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ForeignExchangeBound)
+                    @(item.ForeignExchangeBound ? "Yes" : "No")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ClassOf)
