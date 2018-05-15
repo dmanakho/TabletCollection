@@ -51,6 +51,9 @@
                             @Html.HiddenFor(m => m[i].SerialNo)
                             @Html.HiddenFor(m => m[i].AssetTag)
                             @Html.HiddenFor(m => m[i].IsPickedUp)
+                            @Html.HiddenFor(m => m[i].IsExtraPurchase)
+                            @Html.HiddenFor(m => m[i].IsVendorBuyout)
+                            @Html.HiddenFor(m => m[i].Notes)
                         </td>
                         <td>
                             @Html.DisplayFor(model => model[i].TabletName)

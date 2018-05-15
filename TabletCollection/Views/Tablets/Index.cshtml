@@ -45,9 +45,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsExtraPurchase)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.IsPickedUp)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.IsVendorBuyout)
             </th>
@@ -83,9 +83,9 @@
                 <td>
                     @(item.IsExtraPurchase ? "Yes" : "No")
                 </td>
-                <td>
+                @*<td>
                     @(item.IsPickedUp ? "Yes" : "No")
-                </td>
+                </td>*@
                 <td>
                     @(item.IsVendorBuyout ? "Yes" : "No")
                 </td>
@@ -137,7 +137,7 @@
                     "columnDefs": [
                         { "orderable": false, "targets": @ViewBag.ExtraColumn  },
                         {
-                            "targets": [2, 7],
+                            "targets": [2, 6],
                             "visible": false,
                             "searchable": false
                         },
