@@ -60,6 +60,9 @@ namespace TabletCollection.ViewModels
         [DisplayName("Student")]
         public string StudentFullName { get; set; }
 
+        [DisplayName("Student Notes")]
+        public string StudentNotes { get; set; }
+
         [DisplayName("Stylus")]
         public bool IsStylus { get; set; }
 

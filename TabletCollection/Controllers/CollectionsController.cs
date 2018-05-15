@@ -65,7 +65,7 @@ namespace TabletCollection.Controllers
 
             if (!(checkIfCollected == null))
             {
-                collectionViewModel.Comments = $"Uh-Oh! Something went wrong!<br /> " +
+                collectionViewModel.Comments = $"Uh-Oh! Something went wrong! " +
                     $"The tablet is shown as collected. Conflicting collection ID: {checkIfCollected.Id}";
             }
             //viewbag will populate the drop down. I need "tablets" variable to limit the drop down to the tablets that weren't collected yet.

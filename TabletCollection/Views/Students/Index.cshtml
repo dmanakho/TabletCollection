@@ -43,6 +43,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ClassOf)
             </th>
+            <th> @Html.DisplayNameFor(model => model.Notes)</th>
             <th></th>
         </tr>
     </thead>
@@ -50,26 +51,29 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @(item.ForeignExchangeBound ? "Yes" : "No")
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClassOf)
-                </td>
-                <td>
-                    @Html.ActionLink("Collect", "Create", "Collections", new { StudentID = item.ID }, new { @class = "btn btn-primary btn-xs" })
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-xs" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning btn-xs" })
-                </td>
-            </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @(item.ForeignExchangeBound ? "Yes" : "No")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassOf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.ActionLink("Collect", "Create", "Collections", new { StudentID = item.ID }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning btn-xs" })
+            </td>
+        </tr>
         }
     </tbody>
 </table>
@@ -93,7 +97,11 @@
                         'pdf'
                     ],
                     "columnDefs": [
-                        { "orderable": false, "targets": 4 }
+                        { "orderable": false, "targets": 5 },
+                        {
+                            "targets": [4],
+                            "visible": false
+                        },
                     ],
                     "pagingType": "first_last_numbers",
 

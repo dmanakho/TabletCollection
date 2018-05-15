@@ -107,7 +107,7 @@ namespace TabletCollection.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ImportID,FirstName,NickName,LastName,UserName,ForeignExchangeBound,ClassOf")] Student student)
+        public ActionResult Edit([Bind(Include = "ID,ImportID,FirstName,NickName,LastName,UserName,ForeignExchangeBound,ClassOf, Notes")] Student student)
         {
             if (ModelState.IsValid)
             {

@@ -72,6 +72,9 @@ namespace TabletCollection.ViewModels
         [DisplayName("Class Of")]
         public int? StudentClassOf { get; set; }
 
+        [DisplayName("Stu. Notes")]
+        public string StudentNotes { get; set; }
+
 
 
     }

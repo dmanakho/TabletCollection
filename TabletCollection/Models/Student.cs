@@ -25,7 +25,7 @@ namespace TabletCollection.Models
         public string LastName { get; set; }
 
         [Required]
-        [DisplayName("User Name"), MaxLength(50)]
+        [DisplayName("e-mail"), MaxLength(50)]
         public string UserName { get; set; }
 
         [DisplayName("Exch. Trip")]
@@ -39,9 +39,13 @@ namespace TabletCollection.Models
                 return $"{_name} {LastName}";
             }
         }
-        [Required]
         [DisplayName("Class Of")]
         public int? ClassOf { get; set; }
+
+        [DisplayName("Notes")]
+        [MaxLength(500)]
+        [DataType(DataType.MultilineText)]
+        public string Notes { get; set; }
 
         public virtual ICollection<Collection> Collections { get; set; }
     }

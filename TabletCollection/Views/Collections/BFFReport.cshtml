@@ -33,6 +33,9 @@
             <th>
                 @Html.DisplayNameFor(m => m.StudentForeignExchangeBound)
             </th>
+            <th>
+                @Html.DisplayNameFor(m => m.StudentNotes)
+            </th>
             @*Tablet Section*@
             <th>
                 @Html.DisplayNameFor(m => m.TabletID)
@@ -112,7 +115,9 @@
 
                 @(item.StudentForeignExchangeBound ? "Yes" : "No")
             </td>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentNotes)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TabletID)
             </td>

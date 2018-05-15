@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201804212156468_LenovoBuyoutBoolean.Designer.cs">
       <DependentUpon>201804212156468_LenovoBuyoutBoolean.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805152248100_AddedNotesFieldToStudentModelRemovedRequiredOnClassOff.cs" />
+    <Compile Include="Migrations\201805152248100_AddedNotesFieldToStudentModelRemovedRequiredOnClassOff.Designer.cs">
+      <DependentUpon>201805152248100_AddedNotesFieldToStudentModelRemovedRequiredOnClassOff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Auditable.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -527,6 +531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804212156468_LenovoBuyoutBoolean.resx">
       <DependentUpon>201804212156468_LenovoBuyoutBoolean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805152248100_AddedNotesFieldToStudentModelRemovedRequiredOnClassOff.resx">
+      <DependentUpon>201805152248100_AddedNotesFieldToStudentModelRemovedRequiredOnClassOff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

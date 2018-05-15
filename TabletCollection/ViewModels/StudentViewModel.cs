@@ -27,7 +27,7 @@ namespace TabletCollection.ViewModels
         public string LastName { get; set; }
 
         [Required]
-        [DisplayName("User Name"), MaxLength(50)]
+        [DisplayName("E-mail"), MaxLength(50)]
         public string UserName { get; set; }
 
         [DisplayName("Exch. Trip")]
@@ -36,9 +36,12 @@ namespace TabletCollection.ViewModels
         [DisplayName("Full Name")]
         public string FullName { get; set; }
 
-        [Required]
         [DisplayName("Class Of")]
         public int? ClassOf { get; set; }
+
+        [DisplayName("Note")]
+        [MaxLength(500)]
+        public string Notes { get; set; }
 
         public bool IsTabletCollected { get; set; }
 
